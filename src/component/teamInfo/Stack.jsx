@@ -1,7 +1,8 @@
-import * as echarts from 'echarts'
-import {useEffect, useRef} from "react";
-import {scoreLineConfig} from "../config/scoreLineConfig";
-export const ScoreLine=(props)=>{
+import {useEffect, useRef, useState} from "react";
+import * as echarts from "echarts";
+import {StackConfig} from "../../config/StackConfig";
+
+export const Stack=(props)=>{
     const ref = useRef(null);
     let echartInstance = null;
     const renderLine = () => {
@@ -12,14 +13,13 @@ export const ScoreLine=(props)=>{
             echartInstance = echarts.init(ref.current);
         }
         echartInstance.setOption(
-            scoreLineConfig()
+            StackConfig({teamname:props.team})
         );
     }
     useEffect(()=>{
-      renderLine()
-    },[])
-
+        renderLine()
+    },[props.team])
     return(
-        <div ref={ref} style={{height:'600px',width:'50%'}}></div>
+        <div ref={ref} style={{width:'500px',height:'500px'}}></div>
     )
 }

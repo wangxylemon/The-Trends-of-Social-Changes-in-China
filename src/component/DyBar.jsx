@@ -8,9 +8,6 @@ export const DyBar=(props)=>{
     let echartInstance = null;
     const teams = Object.keys(data);
     function updateYear(index,option) {
-        console.log(teams.map((t) => {
-            return [t, data[t]["score"][index]]
-        }))
         option.series[0].data = teams.map((t) => {
             return [t, data[t]["score"][index]]
         });
@@ -40,6 +37,6 @@ export const DyBar=(props)=>{
         renderLine()
     },[])
     return(
-        <div ref={ref} style={{height:'600px',width:'1000px'}}></div>
+        <div ref={ref} style={{height:'600px',width:'50%'}}></div>
     )
 }
